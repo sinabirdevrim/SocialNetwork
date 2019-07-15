@@ -95,8 +95,8 @@
                 bind:visibility="@{viewmodel.viewState==ViewState.LOADING}"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout"
                 app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
-                app:layout_constraintStart_toStartOf="@+id/linearLayout" android:layout_marginStart="@dimen/margin_8"
-                android:layout_marginTop="@dimen/margin_8" app:layout_constraintTop_toTopOf="@+id/linearLayout"/>
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="@+id/linearLayout"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

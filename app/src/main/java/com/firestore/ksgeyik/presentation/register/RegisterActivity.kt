@@ -38,13 +38,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         mViewDataBinding?.apply {
             activityRegisterSignUpBtn.setOnClickListener {
                 mViewModel.savePhoto(
-                    fileUri, User(
-                        activityRegisterNameEt.text.toString(),
-                        activityRegisterSurnameEt.text.toString(),
-                        activityRegisterEmailEt.text.toString(),
-                        activityRegisterPasswordEt.text.toString(),
-                        ""
-                    )
+                    fileUri, fillUser()
                 )
             }
         }
@@ -52,11 +46,21 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
         mViewModel.liveData.observe(this, Observer {
             when (it) {
                 true -> startActivity(intentFor<MainActivity>().clearTop().newTask())
-                false ->toast(getString(R.string.error))
+                false -> toast(getString(R.string.error))
             }
             finish()
         })
 
+    }
+
+    private fun ActivityRegisterBinding.fillUser(): User {
+        return User(
+            activityRegisterNameEt.text.toString(),
+            activityRegisterSurnameEt.text.toString(),
+            activityRegisterEmailEt.text.toString(),
+            activityRegisterPasswordEt.text.toString(),
+            ""
+        )
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

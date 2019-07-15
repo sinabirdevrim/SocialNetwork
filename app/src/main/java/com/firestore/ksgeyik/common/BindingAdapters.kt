@@ -1,7 +1,7 @@
 package com.firestore.ksgeyik.common
 
 import android.view.View
-import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 
@@ -24,8 +24,8 @@ class BindingAdapters {
         }
 
         @JvmStatic
-        @BindingAdapter("bind:imageUrl")
-        fun ImageView.loadImage(url: String?) {
+        @BindingAdapter("bind:loadImage")
+        fun AppCompatImageView.loadImage(url: String?) {
             url?.let { Glide.with(this.context).load(url).into(this) }
 
         }
