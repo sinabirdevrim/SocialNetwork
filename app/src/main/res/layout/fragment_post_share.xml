@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:id="@+id/topBar"
+            android:background="@color/primaryColor"
+            android:layout_width="match_parent"
+            android:layout_height="56dp">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/activityPostShareBtn"
+                android:layout_margin="16dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="Paylaş"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <EditText
+            android:id="@+id/activityPostShareEt"
+            android:layout_above="@+id/bottomBar"
+            android:background="@null"
+            android:layout_below="@id/topBar"
+            android:layout_margin="@dimen/margin_8"
+            android:gravity="top"
+            android:hint="Ne düşünüyorsun"
+            android:layout_width="match_parent" android:layout_height="match_parent"/>
+
+    <RelativeLayout
+            android:id="@+id/bottomBar"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/activityPostShareGallery"
+                android:src="@mipmap/ic_launcher"
+                android:layout_margin="@dimen/margin_8"
+                android:layout_width="48dp" android:layout_height="48dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

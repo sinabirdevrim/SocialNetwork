@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "902992497347",
+    "firebase_url": "https://ksgeyik-7ea16.firebaseio.com",
+    "project_id": "ksgeyik-7ea16",
+    "storage_bucket": "ksgeyik-7ea16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902992497347:android:f14ca5642d3e3f5a",
+        "android_client_info": {
+          "package_name": "com.firestore.geyik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902992497347-4abj217k941mkt84cokmtet1uiqhsr16.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.firestore.geyik",
+            "certificate_hash": "6e748db7dd0fd6689e767c4776a60f2d38657d9b"
+          }
+        },
+        {
+          "client_id": "902992497347-m5iusuvrqfs0reuc925stiu3qrfbq91s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDodwDSvn4Be1CGZyIHetCkC3w8cFMnUlA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "902992497347-m5iusuvrqfs0reuc925stiu3qrfbq91s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

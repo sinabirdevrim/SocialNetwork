@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></RelativeLayout>
+
+        <ImageView
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                android:id="@+id/itemPostListIv"
+                android:layout_width="match_parent"
+                android:layout_height="256dp"/>
+
+        <TextView android:id="@+id/itemPostListTv"
+                  android:layout_marginTop="@dimen/margin_8"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

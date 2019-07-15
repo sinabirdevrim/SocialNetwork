@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <TextView
+                android:layout_centerInParent="false"
+                android:text="text"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragmentPostListRv"
+                android:layout_below="@+id/topBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fragmentPostListProfileFab"
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/ic_send"
+                android:layout_margin="@dimen/margin_16"/>
+
+    </RelativeLayout>
+</layout>

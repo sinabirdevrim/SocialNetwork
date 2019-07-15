@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="viewmodel"
+                  type="com.firestore.ksgeyik.presentation.register.RegisterViewModel"/>
+
+        <import type="com.firestore.ksgeyik.enums.ViewState"/>
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/linearLayout">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/activityRegisterPicIv"
+                    android:layout_margin="@dimen/margin_16"
+                    android:src="@drawable/ic_user"
+                    android:layout_gravity="center"
+                    android:layout_width="128dp" android:layout_height="128dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/margin_16"
+                    android:layout_height="wrap_content"
+                    android:hint="Email">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityRegisterEmailEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/margin_16"
+                    android:layout_height="wrap_content"
+                    android:hint="Ad">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityRegisterNameEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/margin_16"
+                    android:layout_height="wrap_content"
+                    android:hint="Soyad">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityRegisterSurnameEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/margin_16"
+                    android:layout_height="wrap_content"
+                    android:hint="Şifre">
+
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityRegisterPasswordEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/activityRegisterSignUpBtn"
+                    android:text="Kaydol"
+                    bind:clickable="@{viewmodel.viewState==ViewState.EMPTY}"
+                    android:layout_margin="@dimen/margin_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                bind:visibility="@{viewmodel.viewState==ViewState.LOADING}"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout" android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8" app:layout_constraintTop_toTopOf="@+id/linearLayout"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
