@@ -20,7 +20,7 @@ class ViewModelProviderFactory @Inject constructor(private val dataManager: Data
         when {
             modelClass.isAssignableFrom(LoginViewModel::class.java!!) -> return LoginViewModel() as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java!!) -> return RegisterViewModel(dataManager,schedulerProvider) as T
-            modelClass.isAssignableFrom(MainActivityViewModel::class.java!!) -> return MainActivityViewModel() as T
+            modelClass.isAssignableFrom(MainActivityViewModel::class.java!!) -> return MainActivityViewModel(dataManager) as T
             modelClass.isAssignableFrom(PostListViewModel::class.java!!) -> return PostListViewModel(dataManager) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name) as Throwable
         }

@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">KSGeyik</string>
+    <string name="app_name">SocialNetwork</string>
+    <string name="error">An error occured</string>
 </resources>

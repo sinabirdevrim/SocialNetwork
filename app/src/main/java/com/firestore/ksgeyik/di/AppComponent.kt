@@ -1,7 +1,6 @@
 package com.firestore.ksgeyik.di
 
 import android.app.Application
-import com.firestore.ksgeyik.App
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -18,8 +17,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [AndroidSupportInjectionModule::class, AppModule::class, ActivityBuilder::class])
 interface AppComponent : AndroidInjector<DaggerApplication> {
-
-    fun inject(app: App)
 
     override fun inject(instance: DaggerApplication)
 

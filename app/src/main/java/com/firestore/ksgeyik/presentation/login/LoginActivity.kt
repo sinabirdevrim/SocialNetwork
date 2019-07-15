@@ -22,6 +22,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
         mViewDataBinding?.activityLoginSignInBtn?.setOnClickListener {
             startActivity(intentFor<MainActivity>().clearTop().newTask())
+            finish()
         }
     }
 
