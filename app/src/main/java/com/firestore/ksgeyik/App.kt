@@ -3,9 +3,7 @@ package com.firestore.ksgeyik
 import com.firestore.ksgeyik.di.DaggerAppComponent
 import com.orhanobut.hawk.Hawk
 import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
-import java.util.concurrent.Future
-import java.util.concurrent.RunnableFuture
+import dagger.android.support.DaggerApplication
 
 class App : DaggerApplication() {
 

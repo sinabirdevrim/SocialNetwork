@@ -10,6 +10,14 @@ import com.firestore.ksgeyik.databinding.FragmentPostListBinding
 
 class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel>() {
 
+    companion object {
+        @JvmStatic
+        fun newInstance(): PostListFragment {
+            val fragment = PostListFragment()
+            return fragment
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mViewModel.getPostList()
