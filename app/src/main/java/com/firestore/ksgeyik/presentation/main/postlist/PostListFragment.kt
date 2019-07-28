@@ -7,8 +7,14 @@ import androidx.lifecycle.Observer
 import com.firestore.ksgeyik.R
 import com.firestore.ksgeyik.common.BaseFragment
 import com.firestore.ksgeyik.databinding.FragmentPostListBinding
+import com.firestore.ksgeyik.enums.ToolBarState
+import com.firestore.ksgeyik.presentation.main.MainActivity
 
 class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel>() {
+
+    init {
+        (activity as MainActivity).setToolbar(ToolBarState.MAIN)
+    }
 
     companion object {
         @JvmStatic

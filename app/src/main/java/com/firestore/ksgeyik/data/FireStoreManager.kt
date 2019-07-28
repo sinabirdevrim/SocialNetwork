@@ -35,4 +35,9 @@ class FireStoreManager {
     fun getPosts(): Task<QuerySnapshot>? {
         return db?.collection("post")?.get()
     }
+
+    fun getUserByUserNameAndPassWord(email: String, password: String): Task<QuerySnapshot>? {
+        return db?.collection("user")?.whereEqualTo("email", email)?.whereEqualTo("password", password)?.get()
+
+    }
 }

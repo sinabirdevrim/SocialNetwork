@@ -6,6 +6,7 @@ import com.firestore.android.repository.DataManager
 import com.firestore.android.repository.model.User
 import com.firestore.ksgeyik.common.BaseViewModel
 import com.firestore.ksgeyik.common.Constants
+import com.firestore.ksgeyik.enums.ToolBarState
 import com.firestore.ksgeyik.enums.ViewState
 import com.orhanobut.hawk.Hawk
 
@@ -14,6 +15,7 @@ class MainActivityViewModel(dataManager: DataManager) : BaseViewModel() {
     val dataManager = dataManager
     val liveData = MutableLiveData<User>()
     var url = ObservableField<String>()
+    var toolBarState = ObservableField<ToolBarState>()
     var viewState = ObservableField(ViewState.LOADING)
 
     fun getUser() {

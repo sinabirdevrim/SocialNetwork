@@ -7,6 +7,8 @@ import dagger.android.support.DaggerApplication
 
 class App : DaggerApplication() {
 
+    // hesap gurkankesgin75
+
     override fun onCreate() {
         super.onCreate()
         Hawk.init(this).build()

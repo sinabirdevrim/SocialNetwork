@@ -6,6 +6,7 @@ import com.firestore.ksgeyik.common.BaseActivity
 import com.firestore.ksgeyik.databinding.ActivityLoginBinding
 import com.firestore.ksgeyik.presentation.main.MainActivity
 import com.firestore.ksgeyik.presentation.register.RegisterActivity
+import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.newTask
@@ -16,13 +17,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mViewDataBinding?.activityLoginSignUpBtn?.setOnClickListener {
-            startActivity(intentFor<RegisterActivity>())
-        }
-
-        mViewDataBinding?.activityLoginSignInBtn?.setOnClickListener {
-            startActivity(intentFor<MainActivity>().clearTop().newTask())
-            finish()
+        mViewDataBinding?.apply {
+            activityLoginSignInBtn.setOnClickListener {
+                val email = activityLoginEmailEt.text.toString()
+                val password = activityLoginPasswordEt.text.toString()
+                mViewModel.getUser(email, password)
+            }
+            activityLoginSignUpBtn.setOnClickListener {
+                startActivity(intentFor<RegisterActivity>())
+            }
         }
     }
 

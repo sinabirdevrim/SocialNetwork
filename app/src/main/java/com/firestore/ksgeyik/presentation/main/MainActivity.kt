@@ -7,6 +7,7 @@ import com.firestore.ksgeyik.R
 import com.firestore.ksgeyik.common.BaseActivity
 import com.firestore.ksgeyik.common.Constants
 import com.firestore.ksgeyik.databinding.ActivityMainBinding
+import com.firestore.ksgeyik.enums.ToolBarState
 import com.firestore.ksgeyik.extensions.replaceFragment
 import com.firestore.ksgeyik.presentation.main.postlist.PostListFragment
 import com.orhanobut.hawk.Hawk
@@ -22,6 +23,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
         })
 
         replaceFragment(PostListFragment.newInstance(), R.id.activityMainFl)
+    }
+
+    fun setToolbar(toolBarState: ToolBarState) {
+        mViewModel.toolBarState.set(toolBarState)
     }
 
     override fun getLayoutId(): Int {

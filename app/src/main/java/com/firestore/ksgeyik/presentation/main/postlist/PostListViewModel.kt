@@ -15,7 +15,5 @@ class PostListViewModel(dataManager: DataManager) : BaseViewModel() {
             val postList = it.result?.toObjects(Post::class.java)
             liveData.postValue(postList)
         }
-
-
     }
 }
