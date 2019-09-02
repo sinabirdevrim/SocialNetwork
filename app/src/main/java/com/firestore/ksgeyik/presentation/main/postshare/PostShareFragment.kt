@@ -7,6 +7,13 @@ import com.firestore.ksgeyik.databinding.FragmentPostShareBinding
 
 class PostShareFragment : BaseFragment<FragmentPostShareBinding, PostShareViewModel>() {
 
+    companion object {
+        @JvmStatic
+        fun newInstance(): PostShareFragment {
+            return PostShareFragment()
+        }
+    }
+
     override fun getViewModelBindingVariable(): Int {
         return BR.viewmodel
     }

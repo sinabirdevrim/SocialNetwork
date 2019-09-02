@@ -14,9 +14,10 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 
 inline fun <reified T : Any> AppCompatActivity.launchActivity(
-        requestCode: Int = -1,
-        options: Bundle? = null,
-        noinline init: Intent.() -> Unit = {}) {
+    requestCode: Int = -1,
+    options: Bundle? = null,
+    noinline init: Intent.() -> Unit = {}
+) {
 
     val intent = newIntent<T>(this)
     intent.init()
@@ -27,18 +28,23 @@ inline fun <reified T : Any> AppCompatActivity.launchActivity(
 }
 
 inline fun <reified T : Any> Context.launchActivity(
-        options: Bundle? = null,
-        noinline init: Intent.() -> Unit = {}) {
+    options: Bundle? = null,
+    noinline init: Intent.() -> Unit = {}
+) {
 
     val intent = newIntent<T>(this)
     intent.init()
     startActivity(intent, options)
 }
 
-fun AppCompatActivity.replaceFragment(fragment: Fragment, @IdRes containerId: Int, tag: String = fragment.javaClass.simpleName) {
+fun AppCompatActivity.replaceFragment(
+    fragment: Fragment, @IdRes containerId: Int,
+    tag: String = fragment.javaClass.simpleName
+) {
     val fragmentTransaction = supportFragmentManager.beginTransaction()
     fragmentTransaction.replace(containerId, fragment, tag)
     fragmentTransaction.commitAllowingStateLoss()
+    fragmentTransaction.addToBackStack(null)
 }
 
 fun Context.dimension(@DimenRes id: Int): Int {
@@ -60,7 +66,7 @@ inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> Unit) {
 
 
 inline fun <reified T : Any> newIntent(context: Context): Intent =
-        Intent(context, T::class.java)
+    Intent(context, T::class.java)
 
 fun Fragment.hideSoftKeyboard() {
     if (activity != null)

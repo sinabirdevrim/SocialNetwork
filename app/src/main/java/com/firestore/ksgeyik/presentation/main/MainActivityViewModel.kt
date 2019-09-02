@@ -17,12 +17,15 @@ class MainActivityViewModel(dataManager: DataManager) : BaseViewModel() {
     var viewState = ObservableField(ViewState.LOADING)
 
     fun getUser() {
-        dataManager?.getFireStoreManager()?.getUser(Hawk.get(Constants.USER_ID))?.addOnCompleteListener {
-            val user = it?.result?.toObject(User::class.java)
-            liveData.postValue(user)
-            url.set(user?.photoUrl)
-            viewState.set(ViewState.CONTENT)
-        }
+
+        var disposable = dataManager?.getFireStoreManager()?.getUser(Hawk.get(Constants.USER_ID))
+            ?.addOnCompleteListener {
+                val user = it?.result?.toObject(User::class.java)
+                liveData.postValue(user)
+                url.set(user?.photoUrl)
+                viewState.set(ViewState.CONTENT)
+            }
+
     }
 
 }

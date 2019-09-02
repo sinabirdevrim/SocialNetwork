@@ -9,6 +9,7 @@ import com.firestore.ksgeyik.common.Constants
 import com.firestore.ksgeyik.databinding.ActivityMainBinding
 import com.firestore.ksgeyik.extensions.replaceFragment
 import com.firestore.ksgeyik.presentation.main.postlist.PostListFragment
+import com.firestore.ksgeyik.presentation.main.postshare.PostShareFragment
 import com.orhanobut.hawk.Hawk
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() {
@@ -22,6 +23,10 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
         })
 
         replaceFragment(PostListFragment.newInstance(), R.id.activityMainFl)
+
+        mViewDataBinding?.activityMainShareIv?.setOnClickListener {
+            replaceFragment(PostShareFragment.newInstance(), R.id.activityMainFl)
+        }
     }
 
     override fun getLayoutId(): Int {

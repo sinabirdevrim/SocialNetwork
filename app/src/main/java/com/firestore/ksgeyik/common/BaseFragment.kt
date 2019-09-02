@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProviders
@@ -30,6 +31,9 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : DaggerFrag
     lateinit var mViewModelFactory: ViewModelProviderFactory
 
     abstract fun getViewModelBindingVariable(): Int
+
+    protected val appCompatActivity: AppCompatActivity?
+        get() = activity as AppCompatActivity?
 
     @LayoutRes
     abstract fun getLayoutId(): Int
