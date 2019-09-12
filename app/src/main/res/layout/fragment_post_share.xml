@@ -1,33 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:bind="http://schemas.android.com/tools">
 
-    <EditText
-            android:id="@+id/activityPostShareEt"
-            android:layout_above="@+id/bottomBar"
-            android:background="@null"
-            android:layout_margin="@dimen/margin_8"
-            android:gravity="top"
-            android:hint="Ne düşünüyorsun"
-            android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <data>
+        <variable
+                name="viewmodel"
+                type="com.firestore.ksgeyik.presentation.main.postshare.PostShareViewModel" />
+        <import type="com.firestore.ksgeyik.enums.ViewState"/>
+    </data>
 
-    <RelativeLayout
-            android:id="@+id/bottomBar"
-            android:layout_alignParentBottom="true"
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-                android:id="@+id/activityPostShareGallery"
-                android:src="@mipmap/ic_launcher"
+        <EditText
+                android:id="@+id/activityPostShareEt"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_above="@+id/bottomBar"
                 android:layout_margin="@dimen/margin_8"
-                android:layout_width="48dp" android:layout_height="48dp"/>
+                android:background="@null"
+                android:gravity="top"
+                android:hint="Ne düşünüyorsun"
+                app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-</RelativeLayout>
+            <ImageView
+                    android:id="@+id/activityPostShareGalleryIv"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_margin="@dimen/margin_8"
+                    android:src="@mipmap/ic_launcher" />
+
+        </RelativeLayout>
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:visibility="@{viewmodel.viewState==ViewState.LOADING}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

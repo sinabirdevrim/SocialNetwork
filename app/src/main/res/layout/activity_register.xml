@@ -5,7 +5,6 @@
     <data>
         <variable name="viewmodel"
                   type="com.firestore.ksgeyik.presentation.register.RegisterViewModel"/>
-
         <import type="com.firestore.ksgeyik.enums.ViewState"/>
     </data>
 

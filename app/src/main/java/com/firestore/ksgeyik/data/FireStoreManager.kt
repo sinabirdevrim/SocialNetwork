@@ -3,10 +3,7 @@ package com.firestore.android.repository
 import com.firestore.android.repository.model.Post
 import com.firestore.android.repository.model.User
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.*
 
 class FireStoreManager {
 
@@ -26,6 +23,10 @@ class FireStoreManager {
 
     fun getUser(userId: String): Task<DocumentSnapshot>? {
         return db?.collection("user")?.document(userId)?.get()
+    }
+
+    fun login(email: String, password: String): Query? {
+       return db?.collection("user")?.whereEqualTo("email", email)?.whereEqualTo("password",password)
     }
 
     fun savePost(post: Post): Task<DocumentReference>? {

@@ -1,55 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
 
-    <LinearLayout
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:gravity="center"
-                  android:layout_height="match_parent">
+    <data>
 
+        <variable
+                name="viewmodel"
+                type="com.firestore.ksgeyik.presentation.login.LoginViewModel" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <import type="com.firestore.ksgeyik.enums.ViewState" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_margin="@dimen/margin_16"
-                android:layout_height="wrap_content"
-                android:hint="Email">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/activityLoginEmailEt"
+
+            <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:hint="Email">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityLoginEmailEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/activityLoginPasswordEt"
-                android:layout_width="match_parent"
-                android:layout_margin="@dimen/margin_16"
-                android:layout_height="wrap_content"
-                android:hint="Şifre">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
+
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_16"
+                    android:hint="Şifre">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/activityLoginPasswordEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-        <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/activityLoginSignInBtn"
-                android:text="Giriş Yap"
-                android:layout_marginRight="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_16"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/activityLoginSignUpBtn"
-                android:text="Kaydol"
-                android:layout_marginRight="@dimen/margin_16"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/activityLoginSignInBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginTop="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text="Giriş Yap" />
 
-    </LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/activityLoginSignUpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16"
+                    android:layout_marginRight="@dimen/margin_16"
+                    android:text="Kaydol" />
+
+        </LinearLayout>
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:visibility="@{viewmodel.viewState==ViewState.LOADING}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

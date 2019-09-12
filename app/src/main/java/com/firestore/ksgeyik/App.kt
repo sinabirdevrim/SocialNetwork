@@ -7,6 +7,12 @@ import dagger.android.support.DaggerApplication
 
 class App : DaggerApplication() {
 
+    /**
+     *
+     *      Firebase hesabı
+     *      gurkankesgindev@gmail.com
+     */
+
     override fun onCreate() {
         super.onCreate()
         Hawk.init(this).build()

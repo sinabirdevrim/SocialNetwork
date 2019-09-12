@@ -47,6 +47,18 @@ fun AppCompatActivity.replaceFragment(
     fragmentTransaction.addToBackStack(null)
 }
 
+/**
+ *      empty backstack
+ */
+fun AppCompatActivity.replaceFragmentFirst(
+    fragment: Fragment, @IdRes containerId: Int,
+    tag: String = fragment.javaClass.simpleName
+) {
+    val fragmentTransaction = supportFragmentManager.beginTransaction()
+    fragmentTransaction.replace(containerId, fragment, tag)
+    fragmentTransaction.commitAllowingStateLoss()
+}
+
 fun Context.dimension(@DimenRes id: Int): Int {
     return resources.getDimension(id).toInt()
 }

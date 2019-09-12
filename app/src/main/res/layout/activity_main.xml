@@ -4,15 +4,11 @@
         xmlns:bind="http://schemas.android.com/tools">
 
     <data>
-
         <variable
                 name="viewmodel"
                 type="com.firestore.ksgeyik.presentation.main.MainActivityViewModel" />
-
         <import type="com.firestore.ksgeyik.enums.ViewState" />
-
         <import type="com.firestore.ksgeyik.enums.ToolBarState" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +47,8 @@
                     android:layout_margin="@dimen/margin_8"
                     android:adjustViewBounds="true"
                     android:padding="8dp"
-                    app:srcCompat="@drawable/ic_send" />
+                    app:srcCompat="@drawable/ic_send"
+                    bind:visibility="@{viewmodel.toolBarState==ToolBarState.POSTSHARE}" />
 
         </RelativeLayout>
 
@@ -61,17 +58,6 @@
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/topBar" />
-
-        <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="false"
-                app:layout_constraintBottom_toBottomOf="@+id/activityMainFl"
-                app:layout_constraintEnd_toEndOf="@+id/activityMainFl"
-                app:layout_constraintStart_toStartOf="@+id/activityMainFl"
-                app:layout_constraintTop_toTopOf="@+id/activityMainFl"
-                bind:visibility="@{viewmodel.viewState==ViewState.LOADING}" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -7,6 +7,10 @@ import androidx.lifecycle.Observer
 import com.firestore.ksgeyik.R
 import com.firestore.ksgeyik.common.BaseFragment
 import com.firestore.ksgeyik.databinding.FragmentPostListBinding
+import com.firestore.ksgeyik.enums.ToolBarState
+import com.firestore.ksgeyik.extensions.replaceFragment
+import com.firestore.ksgeyik.presentation.main.MainActivity
+import com.firestore.ksgeyik.presentation.main.postshare.PostShareFragment
 
 class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel>() {
 
@@ -22,8 +26,15 @@ class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel
         super.onViewCreated(view, savedInstanceState)
         mViewModel.getPostList()
         mViewModel.liveData.observe(this, Observer {
-            mViewDataBinding?.fragmentPostListRv?.adapter = PostListAdapter(it, getBaseActivity()?.baseContext)
+            mViewDataBinding?.fragmentPostListRv?.adapter =
+                PostListAdapter(it, getBaseActivity()?.baseContext)
         })
+        mViewDataBinding?.fragmentPostListProfileFab?.setOnClickListener {
+            (activity as MainActivity).replaceFragment(
+                PostShareFragment.newInstance(),
+                R.id.activityMainFl
+            )
+        }
     }
 
     override fun getViewModelBindingVariable(): Int {
@@ -32,5 +43,9 @@ class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_post_list
+    }
+
+    override fun setToolbarState() {
+        (activity as MainActivity).setToolbar(ToolBarState.MAIN)
     }
 }

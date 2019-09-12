@@ -11,11 +11,11 @@ import com.firestore.ksgeyik.enums.ViewState
 import com.firestore.ksgeyik.util.SchedulerProvider
 import com.orhanobut.hawk.Hawk
 
-class RegisterViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider) : BaseViewModel() {
+class RegisterViewModel(dataManager: DataManager?, schedulerProvider: SchedulerProvider) : BaseViewModel() {
 
     var liveData: MutableLiveData<Boolean>
     var viewState: ObservableField<ViewState>
-    var dataManager: DataManager = dataManager
+    var dataManager: DataManager? = dataManager
 
     init {
         viewState = ObservableField(ViewState.EMPTY)
@@ -40,16 +40,17 @@ class RegisterViewModel(dataManager: DataManager, schedulerProvider: SchedulerPr
         dataManager?.getFireStoreManager()?.saveUser(user)?.addOnSuccessListener { documentReference ->
             viewState.set(ViewState.CONTENT)
             liveData.postValue(true)
-            putHawk(documentReference.id)
+            putHawk(documentReference.id,user)
         }?.addOnFailureListener {
             viewState.set(ViewState.ERROR)
             liveData.postValue(false)
         }
     }
 
-    private fun putHawk(id: String) {
+    private fun putHawk(id: String, user: User) {
         Hawk.put(Constants.IS_LOGIN, true)
         Hawk.put(Constants.USER_ID, id)
+        Hawk.put(Constants.USER, user)
     }
 
 }

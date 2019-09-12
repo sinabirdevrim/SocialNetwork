@@ -32,6 +32,8 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     abstract fun getViewModelBindingVariable(): Int
 
+    abstract fun setToolbarState()
+
     protected val appCompatActivity: AppCompatActivity?
         get() = activity as AppCompatActivity?
 
@@ -68,6 +70,7 @@ abstract class BaseFragment<B : ViewDataBinding, V : BaseViewModel> : DaggerFrag
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setToolbarState()
         mViewDataBinding?.setVariable(getViewModelBindingVariable(), mViewModel)
         mViewDataBinding?.lifecycleOwner = this
         mViewDataBinding?.executePendingBindings()

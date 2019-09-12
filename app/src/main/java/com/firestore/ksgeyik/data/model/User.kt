@@ -1,8 +1,6 @@
 package com.firestore.android.repository.model
 
 import androidx.databinding.BaseObservable
-import androidx.databinding.Bindable
-import androidx.databinding.library.baseAdapters.BR
 
 class User : BaseObservable {
 
@@ -10,13 +8,7 @@ class User : BaseObservable {
     var surname: String? = null
     var email: String? = null
     var password: String? = null
-    @get:Bindable
     var photoUrl: String? = null
-        set(value) {
-            field = value
-            notifyPropertyChanged(BR.photoUrl)
-        }
-
 
     constructor() {
     }
