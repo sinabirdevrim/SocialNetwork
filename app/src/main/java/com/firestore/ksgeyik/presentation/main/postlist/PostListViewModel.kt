@@ -1,16 +1,16 @@
 package com.firestore.ksgeyik.presentation.main.postlist
 
 import androidx.databinding.ObservableField
-import androidx.lifecycle.MutableLiveData
 import com.firestore.android.repository.DataManager
 import com.firestore.android.repository.model.Post
 import com.firestore.ksgeyik.common.BaseViewModel
+import com.firestore.ksgeyik.common.SingleLiveEvent
 import com.firestore.ksgeyik.enums.ViewState
 
 class PostListViewModel(dataManager: DataManager) : BaseViewModel() {
 
     var dataManager = dataManager
-    var liveData = MutableLiveData<List<Post>>()
+    var liveData = SingleLiveEvent<List<Post>>()
     var viewState = ObservableField(ViewState.LOADING)
 
     fun getPostList() {

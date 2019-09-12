@@ -2,25 +2,22 @@ package com.firestore.ksgeyik.presentation.register
 
 import android.net.Uri
 import androidx.databinding.ObservableField
-import androidx.lifecycle.MutableLiveData
 import com.firestore.android.repository.DataManager
 import com.firestore.android.repository.model.User
 import com.firestore.ksgeyik.common.BaseViewModel
 import com.firestore.ksgeyik.common.Constants
+import com.firestore.ksgeyik.common.SingleLiveEvent
 import com.firestore.ksgeyik.enums.ViewState
 import com.firestore.ksgeyik.util.SchedulerProvider
 import com.orhanobut.hawk.Hawk
 
-class RegisterViewModel(dataManager: DataManager?, schedulerProvider: SchedulerProvider) : BaseViewModel() {
+class RegisterViewModel(dataManager: DataManager?, schedulerProvider: SchedulerProvider) :
+    BaseViewModel() {
 
-    var liveData: MutableLiveData<Boolean>
-    var viewState: ObservableField<ViewState>
+    var liveData = SingleLiveEvent<Boolean>()
+    var viewState = ObservableField<ViewState>(ViewState.EMPTY)
     var dataManager: DataManager? = dataManager
 
-    init {
-        viewState = ObservableField(ViewState.EMPTY)
-        liveData = MutableLiveData()
-    }
 
     fun savePhoto(fileUri: Uri, user: User) {
         viewState.set(ViewState.LOADING)
@@ -37,14 +34,15 @@ class RegisterViewModel(dataManager: DataManager?, schedulerProvider: SchedulerP
     }
 
     fun saveUser(user: User) {
-        dataManager?.getFireStoreManager()?.saveUser(user)?.addOnSuccessListener { documentReference ->
-            viewState.set(ViewState.CONTENT)
-            liveData.postValue(true)
-            putHawk(documentReference.id,user)
-        }?.addOnFailureListener {
-            viewState.set(ViewState.ERROR)
-            liveData.postValue(false)
-        }
+        dataManager?.getFireStoreManager()?.saveUser(user)
+            ?.addOnSuccessListener { documentReference ->
+                viewState.set(ViewState.CONTENT)
+                liveData.postValue(true)
+                putHawk(documentReference.id, user)
+            }?.addOnFailureListener {
+                viewState.set(ViewState.ERROR)
+                liveData.postValue(false)
+            }
     }
 
     private fun putHawk(id: String, user: User) {
