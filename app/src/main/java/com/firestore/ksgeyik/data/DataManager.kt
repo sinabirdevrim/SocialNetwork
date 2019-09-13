@@ -12,4 +12,8 @@ class DataManager {
     fun getFireStoreManager(): FireStoreManager? {
         return FireStoreManager.instance
     }
+
+    fun getFireStoreAuth(): FireAuthManager? {
+        return FireAuthManager.instance
+    }
 }
