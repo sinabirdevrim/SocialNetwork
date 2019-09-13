@@ -2,4 +2,9 @@
     <string name="app_name">SocialNetwork</string>
     <string name="error">An error occured</string>
     <string name="empty_post">Text cannot be empty</string>
+    <string name="fragment_share_hint">Ne düşünüyorsun</string>
+    <string name="share">Share</string>
+    <string name="email">Email</string>
+    <string name="name">Ad</string>
+    <string name="surname">Soyad</string>
 </resources>

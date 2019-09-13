@@ -29,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="@dimen/margin_16"
                     android:layout_height="wrap_content"
-                    android:hint="Email">
+                    android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityRegisterEmailEt"
@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="@dimen/margin_16"
                     android:layout_height="wrap_content"
-                    android:hint="Ad">
+                    android:hint="@string/name">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityRegisterNameEt"
@@ -55,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_margin="@dimen/margin_16"
                     android:layout_height="wrap_content"
-                    android:hint="Soyad">
+                    android:hint="@string/surname">
 
                 <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/activityRegisterSurnameEt"

@@ -2,32 +2,59 @@
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="viewmodel"
                 type="com.firestore.ksgeyik.presentation.main.postshare.PostShareViewModel" />
-        <import type="com.firestore.ksgeyik.enums.ViewState"/>
+
+        <import type="com.firestore.ksgeyik.enums.ViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
+
+            android:isScrollContainer="false"
             android:orientation="vertical">
 
-        <EditText
-                android:id="@+id/activityPostShareEt"
+        <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_above="@+id/bottomBar"
-                android:layout_margin="@dimen/margin_8"
-                android:background="@null"
-                android:gravity="top"
-                android:hint="Ne düşünüyorsun"
-                app:layout_constraintBottom_toTopOf="@+id/bottomBar"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:fillViewport="true"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/bottomBar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/activityPostShareEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_8"
+                        android:background="@null"
+                        android:gravity="top"
+                        android:hint="@string/fragment_share_hint"
+                        android:padding="@dimen/margin_8"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/activityPostShareIv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:minHeight="260dp"
+                        android:layout_margin="@dimen/margin_8"
+                        app:layout_constraintTop_toBottomOf="@+id/activityPostShareEt" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
 
         <RelativeLayout
                 android:id="@+id/bottomBar"
@@ -35,12 +62,12 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/activityPostShareGalleryIv"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_margin="@dimen/margin_8"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/ic_gallery" />
 
         </RelativeLayout>
 

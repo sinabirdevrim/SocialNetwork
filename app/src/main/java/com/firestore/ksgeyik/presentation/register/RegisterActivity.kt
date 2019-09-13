@@ -53,7 +53,7 @@ class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel
 
     }
 
-    private fun ActivityRegisterBinding.fillUser(): User {
+    private fun fillUser(): User {
         return User(
             activityRegisterNameEt.text.toString(),
             activityRegisterSurnameEt.text.toString(),
