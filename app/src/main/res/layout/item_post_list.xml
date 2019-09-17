@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
                 name="post"
-                type="com.firestore.android.repository.model.Post" />
+                type="com.firestore.ksgeyik.data.model.Post" />
     </data>
 
 
@@ -27,7 +28,7 @@
                     android:layout_margin="@dimen/margin_4"
                     android:orientation="horizontal">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/itemPostUserIv"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
@@ -42,89 +43,72 @@
                         android:layout_marginLeft="4dp"
                         android:padding="@dimen/margin_8"
                         android:singleLine="true"
-                        android:text="@{post.user.name}"
+                        android:text="@{post.user.name+post.user.surname}"
                         tools:text="asdfasf" />
 
             </LinearLayout>
-
-            <TextView
-                    android:id="@+id/itemPostListTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/margin_8"
-                    tools:text="asdfasdf" />
 
             <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:layout_marginTop="8dp"
-                    android:background="@color/transparentBlack" />
+                    android:background="@color/transparentBlack"
+                    bind:visibility="@{!(post.contentPhotoUrl==null || post.contentPhotoUrl.empty)}" />
 
             <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/itemPostListIv"
                     android:layout_width="match_parent"
                     android:layout_height="256dp"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@mipmap/ic_launcher"
+                    android:visibility="gone"
+                    bind:loadImage="@{post.contentPhotoUrl}" />
 
             <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/transparentBlack" />
+                    android:background="@color/transparentBlack"
+                    bind:visibility="@{!(post.contentPhotoUrl==null || post.contentPhotoUrl.empty)}" />
+
+            <TextView
+                    android:id="@+id/itemPostListTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin_8"
+                    android:text="@{post.contentText}"
+                    tools:text="asdfasdf" />
 
             <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
+                    android:layout_height="56dp"
                     android:orientation="horizontal">
 
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
 
-                    <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/margin_8"
-                            android:layout_toLeftOf="@+id/liketxt"
-                            android:src="@drawable/ic_like" />
+                <ImageView
+                        android:id="@+id/itemPostListLikeIv"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/liketxt"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="16dp"
+                        android:paddingRight="8dp"
+                        android:paddingBottom="16dp"
+                        android:src="@drawable/ic_like" />
 
-                    <TextView
-                            android:id="@+id/liketxt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:text="Beğen" />
-                </RelativeLayout>
+                <ImageView
+                        android:id="@+id/itemPostListCommentIv"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/margin_8"
+                        android:layout_toLeftOf="@+id/commenttxt"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="16dp"
+                        android:src="@drawable/ic_comment" />
 
-                <View
-                        android:layout_width="0.5dp"
-                        android:layout_height="match_parent"
-                        android:background="@color/transparentBlack" />
-
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                    <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="@dimen/margin_8"
-                            android:layout_toLeftOf="@+id/commenttxt"
-                            android:src="@drawable/ic_comment" />
-
-                    <TextView
-                            android:id="@+id/commenttxt"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Yorum Yap" />
-                </RelativeLayout>
 
             </LinearLayout>
 

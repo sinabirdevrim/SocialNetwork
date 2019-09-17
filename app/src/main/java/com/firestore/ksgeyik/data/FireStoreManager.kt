@@ -1,6 +1,6 @@
 package com.firestore.android.repository
 
-import com.firestore.android.repository.model.Post
+import com.firestore.ksgeyik.data.model.Post
 import com.firestore.android.repository.model.User
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.*

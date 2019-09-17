@@ -8,10 +8,10 @@ import android.view.View
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
-import com.firestore.android.repository.model.Post
 import com.firestore.ksgeyik.R
 import com.firestore.ksgeyik.common.BaseFragment
 import com.firestore.ksgeyik.common.Constants
+import com.firestore.ksgeyik.data.model.Post
 import com.firestore.ksgeyik.databinding.FragmentPostShareBinding
 import com.firestore.ksgeyik.enums.ToolBarState
 import com.firestore.ksgeyik.extensions.hideSoftKeyboard
@@ -38,7 +38,7 @@ class PostShareFragment : BaseFragment<FragmentPostShareBinding, PostShareViewMo
         (activity as MainActivity).getShareButton()?.setOnClickListener {
             val text = mViewDataBinding?.activityPostShareEt?.text?.toString()?.trim()
             if (text?.isNotEmpty()!!) {
-                val post = Post("", text, 1, "", Hawk.get(Constants.USER), false)
+                val post = Post("", text, 1, "", Hawk.get(Constants.USER), false,null,null)
                 fileUri?.let {
                     mViewModel.sharePost(post, fileUri)
                 } ?: run {

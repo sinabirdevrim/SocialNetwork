@@ -17,7 +17,13 @@ class User : BaseObservable {
         this.name = name
     }
 
-    constructor(name: String?, surname: String?, email: String?, password: String?, photoUrl: String) {
+    constructor(
+        name: String?,
+        surname: String?,
+        email: String?,
+        password: String?,
+        photoUrl: String
+    ) {
         this.name = name
         this.surname = surname
         this.email = email

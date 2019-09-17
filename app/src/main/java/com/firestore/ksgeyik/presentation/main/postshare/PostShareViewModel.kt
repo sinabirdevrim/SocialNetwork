@@ -3,7 +3,7 @@ package com.firestore.ksgeyik.presentation.main.postshare
 import android.net.Uri
 import androidx.databinding.ObservableField
 import com.firestore.android.repository.DataManager
-import com.firestore.android.repository.model.Post
+import com.firestore.ksgeyik.data.model.Post
 import com.firestore.ksgeyik.common.BaseViewModel
 import com.firestore.ksgeyik.common.SingleLiveEvent
 import com.firestore.ksgeyik.enums.ViewState
