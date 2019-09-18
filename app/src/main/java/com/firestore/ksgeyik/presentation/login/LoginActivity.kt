@@ -18,17 +18,26 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        signUpClickListener()
+        signInClickListener()
+        observeResult()
+    }
 
+    private fun signUpClickListener() {
         mViewDataBinding?.activityLoginSignUpBtn?.setOnClickListener {
             startActivity(intentFor<RegisterActivity>())
         }
+    }
 
+    private fun signInClickListener() {
         mViewDataBinding?.activityLoginSignInBtn?.setOnClickListener {
             val email = mViewDataBinding?.activityLoginEmailEt?.text.toString()
             val passWord = mViewDataBinding?.activityLoginPasswordEt?.text.toString()
             mViewModel.login(email, passWord)
         }
+    }
 
+    private fun observeResult() {
         mViewModel.liveData.observe(this, Observer {
             when (it) {
                 true -> startActivity(intentFor<MainActivity>().clearTop().newTask())

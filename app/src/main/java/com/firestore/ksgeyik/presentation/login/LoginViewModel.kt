@@ -21,12 +21,13 @@ class LoginViewModel(dataManager: DataManager?) : BaseViewModel() {
     }
 
     fun login(email: String, password: String) {
+        viewState.set(ViewState.LOADING)
         dataManager?.getFireStoreManager()?.login(email, password)?.get()?.addOnSuccessListener {
             if (it.documents.size > 0) {
                 val data = it.documents[0].toObject(User::class.java)
                 viewState.set(ViewState.CONTENT)
                 liveData.postValue(true)
-                putHawk(it.documents[0].id,data)
+                putHawk(it.documents[0].id, data)
             } else {
                 viewState.set(ViewState.ERROR)
                 liveData.postValue(false)
