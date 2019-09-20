@@ -22,7 +22,7 @@ class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel.getPostList()
+        lifecycle.addObserver(mViewModel)
         mViewModel.liveData.observe(this, Observer {
             mViewDataBinding?.fragmentPostListRv?.adapter =
                 PostListAdapter(it, getBaseActivity()?.baseContext,

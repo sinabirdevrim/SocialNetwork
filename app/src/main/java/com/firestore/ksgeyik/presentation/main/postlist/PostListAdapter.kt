@@ -16,16 +16,7 @@ class PostListAdapter(
     var commentClick: (arg: Post) -> Unit?
 ) : RecyclerView.Adapter<PostListAdapter.PostListViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        PostListViewHolder(
-            ItemPostListBinding.bind(
-                LayoutInflater.from(context).inflate(
-                    R.layout.item_post_list,
-                    parent,
-                    false
-                )
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = PostListViewHolder(ItemPostListBinding.bind(LayoutInflater.from(context).inflate(R.layout.item_post_list, parent, false)))
 
     override fun getItemCount() = items.size
 
@@ -37,8 +28,7 @@ class PostListAdapter(
         holder.itemPostListLikeIv?.setOnClickListener { likeClick(post) }
     }
 
-    class PostListViewHolder constructor(private val binding: ItemPostListBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    class PostListViewHolder constructor(private val binding: ItemPostListBinding) : RecyclerView.ViewHolder(binding.root) {
         var itemPostListLikeIv: ImageView? = null
         var itemPostListCommentIv: ImageView? = null
         fun bind(post: Post) {
