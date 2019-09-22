@@ -67,16 +67,23 @@ class PostListViewModel(dataManager: DataManager) : BaseViewModel(), LifecycleOb
             likeList!!.add(Hawk.get(Constants.USER))
             post?.likeList = likeList
         }
-        dataManager.getFireStoreManager()?.likePost(post)
+        dataManager.getFireStoreManager()?.likeOrUnlikePost(post)?.addOnSuccessListener {
+
+        }?.addOnFailureListener {
+
+        }
     }
 
     private fun unlikePost(post: Post?) {
+        post?.likeList?.remove(Hawk.get(Constants.USER))
+        dataManager.getFireStoreManager()?.likeOrUnlikePost(post)?.addOnSuccessListener {
+        }?.addOnFailureListener {
 
+        }
     }
 
     fun commentPost(post: Post) {
         dataManager.getFireStoreManager()?.getPosts()?.addOnSuccessListener {
-
         }?.addOnFailureListener {
         }
     }

@@ -37,8 +37,8 @@ class FireStoreManager {
         return db?.collection("post")?.get()
     }
 
-    fun likePost(post: Post?) {
-        db?.collection("post")?.document(post?.id!!)?.update("likeList", post?.likeList)
+    fun likeOrUnlikePost(post: Post?): Task<Void>? {
+       return db?.collection("post")?.document(post?.id!!)?.update("likeList", post?.likeList)
     }
 
     fun getUserByUserNameAndPassWord(email: String, password: String): Task<QuerySnapshot>? {
