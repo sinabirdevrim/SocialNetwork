@@ -30,4 +30,6 @@ class User : BaseObservable {
         this.password = password
         this.photoUrl = photoUrl
     }
+
+    override fun toString(): String = email!!
 }

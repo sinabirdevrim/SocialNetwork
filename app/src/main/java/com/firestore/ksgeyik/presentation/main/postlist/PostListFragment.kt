@@ -11,7 +11,6 @@ import com.firestore.ksgeyik.enums.ToolBarState
 import com.firestore.ksgeyik.extensions.replaceFragment
 import com.firestore.ksgeyik.presentation.main.MainActivity
 import com.firestore.ksgeyik.presentation.main.postshare.PostShareFragment
-import org.jetbrains.anko.support.v4.toast
 
 class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel>() {
 
@@ -22,15 +21,16 @@ class PostListFragment : BaseFragment<FragmentPostListBinding, PostListViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycle.addObserver(mViewModel)
+        //lifecycle.addObserver(mViewModel)
+        mViewModel.getPostList()
         mViewModel.liveData.observe(this, Observer {
             mViewDataBinding?.fragmentPostListRv?.adapter =
                 PostListAdapter(it, getBaseActivity()?.baseContext,
                     {
-                        toast(it.contentText + " like").show()
+                        mViewModel.likeOrUnlikePost(it)
                     },
                     {
-                        toast(it.contentText + " comment").show()
+                        mViewModel.commentPost(it)
                     }
                 )
         })

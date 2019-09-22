@@ -10,7 +10,7 @@ import com.firestore.ksgeyik.data.model.Post
 import com.firestore.ksgeyik.databinding.ItemPostListBinding
 
 class PostListAdapter(
-    private val items: List<Post>,
+    private val items: List<Post?>,
     private val context: Context?,
     var likeClick: (arg: Post) -> Unit?,
     var commentClick: (arg: Post) -> Unit?
@@ -23,7 +23,7 @@ class PostListAdapter(
 
     override fun onBindViewHolder(holder: PostListViewHolder, position: Int) {
         val post = items[position]
-        holder.bind(post)
+        holder.bind(post!!)
         holder.itemPostListCommentIv?.setOnClickListener { commentClick(post) }
         holder.itemPostListLikeIv?.setOnClickListener { likeClick(post) }
     }

@@ -12,6 +12,7 @@ import com.firestore.ksgeyik.common.Constants
 import com.firestore.ksgeyik.databinding.ActivityMainBinding
 import com.firestore.ksgeyik.enums.ToolBarState
 import com.firestore.ksgeyik.extensions.replaceFragment
+import com.firestore.ksgeyik.extensions.replaceFragmentFirst
 import com.firestore.ksgeyik.presentation.main.postlist.PostListFragment
 import com.firestore.ksgeyik.presentation.main.postshare.PostShareFragment
 import com.firestore.ksgeyik.presentation.main.search.SearchFragment
@@ -30,15 +31,15 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
     }
 
     private fun init() {
-        replaceFragment(
+        replaceFragmentFirst(
             PostListFragment.newInstance(),
             R.id.activityMainFl
         )
     }
 
     private fun setToolbarImage() {
-        val user = Hawk.get<User>(Constants.USER)
-        mViewModel.setToolbarImage(user.photoUrl)
+        val user: User? = Hawk.get<User>(Constants.USER)
+        mViewModel.setToolbarImage(user?.photoUrl)
     }
 
     private fun navigationClickListener() {
@@ -66,7 +67,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainActivityViewModel>() 
      */
     private fun navigationChangeListener() {
         supportFragmentManager.addOnBackStackChangedListener {
-            when (supportFragmentManager.fragments.get(supportFragmentManager.fragments.size-1)) {
+            when (supportFragmentManager.fragments.get(supportFragmentManager.fragments.size - 1)) {
                 is PostShareFragment, is PostListFragment -> {
                     mViewDataBinding?.navigation?.menu?.getItem(0)?.isChecked = true
                 }

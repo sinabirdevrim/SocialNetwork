@@ -26,7 +26,7 @@ class FireStoreManager {
     }
 
     fun login(email: String, password: String): Query? {
-       return db?.collection("user")?.whereEqualTo("email", email)?.whereEqualTo("password",password)
+        return db?.collection("user")?.whereEqualTo("email", email)?.whereEqualTo("password", password)
     }
 
     fun savePost(post: Post): Task<DocumentReference>? {
@@ -35,6 +35,10 @@ class FireStoreManager {
 
     fun getPosts(): Task<QuerySnapshot>? {
         return db?.collection("post")?.get()
+    }
+
+    fun likePost(post: Post?) {
+        db?.collection("post")?.document(post?.id!!)?.update("likeList", post?.likeList)
     }
 
     fun getUserByUserNameAndPassWord(email: String, password: String): Task<QuerySnapshot>? {

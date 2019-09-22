@@ -24,23 +24,23 @@ import org.jetbrains.anko.toast
 
 class RegisterActivity : BaseActivity<ActivityRegisterBinding, RegisterViewModel>() {
 
-    lateinit var fileUri: Uri
+    var fileUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mViewDataBinding?.apply {
-            activityRegisterPicIv.setOnClickListener {
-                Utils.openCamera(this@RegisterActivity)
-            }
+        activityRegisterPicIv.setOnClickListener {
+            Utils.openCamera(this@RegisterActivity)
         }
 
-        mViewDataBinding?.apply {
-            activityRegisterSignUpBtn.setOnClickListener {
-                mViewModel.savePhoto(
-                    fileUri, fillUser()
-                )
+        activityRegisterSignUpBtn.setOnClickListener {
+            mViewDataBinding?.apply {
+                if (activityRegisterEmailEt?.text.isNullOrEmpty() || activityRegisterPasswordEt?.text.isNullOrEmpty() || activityRegisterNameEt?.text.isNullOrEmpty() || activityRegisterSurnameEt?.text.isNullOrEmpty())
+                    toast(getString(R.string.fill_the_fields))
+                else
+                    mViewModel.savePhoto(fileUri, fillUser())
             }
+
         }
 
         mViewModel.liveData.observe(this, Observer {

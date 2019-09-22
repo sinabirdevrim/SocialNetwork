@@ -8,24 +8,30 @@
     <data>
         <variable
                 name="viewmodel"
-                type="com.firestore.ksgeyik.presentation.main.search.SettingsViewModel" />
-        <import type="com.firestore.ksgeyik.enums.ViewState" />
+                type="com.firestore.ksgeyik.presentation.main.search.SettingsViewModel"/>
+        <import type="com.firestore.ksgeyik.enums.ViewState"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
         <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/fragmentSettingsLogoutTv"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Settings"
-                android:textSize="32dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:padding="@dimen/margin_16"
+                android:text="@string/logout"
+                android:textColor="@color/secondaryDarkColor"
+                android:textSize="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/primaryDarkColor"/>
+
+    </LinearLayout>
 </layout>

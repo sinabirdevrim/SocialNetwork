@@ -19,9 +19,18 @@ class RegisterViewModel(dataManager: DataManager?, schedulerProvider: SchedulerP
     var dataManager: DataManager? = dataManager
 
 
-    fun savePhoto(fileUri: Uri, user: User) {
+    fun savePhoto(fileUri: Uri?, user: User) {
         viewState.set(ViewState.LOADING)
-        dataManager?.getFireStorageManager()?.putFile(fileUri)?.addOnSuccessListener {
+        fileUri?.let {
+            savePhotoAndUser(fileUri, user)
+        } ?: run {
+            saveUser(user)
+        }
+
+    }
+
+    private fun savePhotoAndUser(fileUri: Uri?, user: User) {
+        dataManager?.getFireStorageManager()?.putFile(fileUri!!)?.addOnSuccessListener {
             it.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
                 //set photoUrl after upload
                 user.photoUrl = it.toString()

@@ -40,10 +40,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>() {
     private fun observeResult() {
         mViewModel.liveData.observe(this, Observer {
             when (it) {
-                true -> startActivity(intentFor<MainActivity>().clearTop().newTask())
-                false -> toast(getString(R.string.error))
+                true -> {
+                    startActivity(intentFor<MainActivity>().clearTop().newTask())
+                    finish()
+                }
+                false -> toast(getString(R.string.login_failure))
             }
-            finish()
         })
     }
 

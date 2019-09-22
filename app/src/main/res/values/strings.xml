@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">SocialNetwork</string>
     <string name="error">An error occured</string>
+    <string name="fill_the_fields">Fill the fields</string>
+    <string name="login_failure">Wrong username or password</string>
     <string name="empty_post">Text cannot be empty</string>
     <string name="fragment_share_hint">Ne düşünüyorsun</string>
     <string name="share">Share</string>
     <string name="email">Email</string>
     <string name="name">Ad</string>
     <string name="surname">Soyad</string>
+    <string name="logout">Logout</string>
+    <string name="like">Beğeni</string>
+    <string name="comment">Yorum</string>
+    <string name="write_comment">Yorum yaz</string>
 </resources>

@@ -21,6 +21,7 @@ import com.firestore.ksgeyik.util.Utils
 import com.orhanobut.hawk.Hawk
 import com.theartofdev.edmodo.cropper.CropImage
 import org.jetbrains.anko.support.v4.toast
+import java.util.*
 
 class PostShareFragment : BaseFragment<FragmentPostShareBinding, PostShareViewModel>() {
 
@@ -38,7 +39,7 @@ class PostShareFragment : BaseFragment<FragmentPostShareBinding, PostShareViewMo
         (activity as MainActivity).getShareButton()?.setOnClickListener {
             val text = mViewDataBinding?.activityPostShareEt?.text?.toString()?.trim()
             if (text?.isNotEmpty()!!) {
-                val post = Post("", text, 1, "", Hawk.get(Constants.USER), false,null,null)
+                val post = Post("", "", text, 1, "", Hawk.get(Constants.USER), false, null, null)
                 fileUri?.let {
                     mViewModel.sharePost(post, fileUri)
                 } ?: run {

@@ -10,7 +10,7 @@ class App : DaggerApplication() {
     /**
      *
      *      Firebase hesabı
-     *      gurkankesgindev@gmail.com
+     *      gurkankesgin75@gmail.com
      */
 
     override fun onCreate() {
