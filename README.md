@@ -1,0 +1,1 @@
+Goddamn Ks Personal Goal
